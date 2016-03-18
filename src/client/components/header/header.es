@@ -8,12 +8,8 @@ export default class HeaderContainer extends React.Component {
         return (
             <Navbar inverse>
 				<Navbar.Header>
-					<Navbar.Brand>
-						<a href="#">Main</a>
-					</Navbar.Brand>
-				</Navbar.Header>
-				<Navbar.Collapse>
 					<Nav>
+						<NavItem eventKey={4} href="#">Main</NavItem>
 						<NavItem eventKey={1} href="#">About</NavItem>
 						<NavItem eventKey={2} href="#">F.A.Q.</NavItem>
 						<NavDropdown eventKey={3} title="Find" id="basic-nav-dropdown">
@@ -23,8 +19,10 @@ export default class HeaderContainer extends React.Component {
 							<MenuItem eventKey={3.3}>Something else ...</MenuItem>
 						</NavDropdown>
 					</Nav>
-				</Navbar.Collapse>
+					<Input type="text" className='mainSearchInput' name="search" placeholder="Search.."/>
+				</Navbar.Header>
 			</Navbar>
+			
         );
     }
 }

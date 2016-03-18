@@ -8,8 +8,24 @@ import {
 	Row,
 	Col,
 	Accordion,
-	Panel
+	Panel,
+	Navbar,
+	DropdownButton,
+	MenuItem
 } from 'react-bootstrap';
+
+const innerDropdown = (
+  <DropdownButton title="Action" id="input-dropdown-addon">
+    <MenuItem key="1">mark</MenuItem>
+    <MenuItem key="2">model</MenuItem>
+    <MenuItem key="3">color</MenuItem>
+    <MenuItem key="4">wifi</MenuItem>
+    <MenuItem key="5">gps</MenuItem>
+    <MenuItem key="6">ram</MenuItem>
+    <MenuItem key="7">memory</MenuItem>
+    <MenuItem key="8">camera</MenuItem>
+  </DropdownButton>
+);
 
 export default class MainPage extends React.Component {
 	constructor(props) {
@@ -19,16 +35,6 @@ export default class MainPage extends React.Component {
 	render() {
 		return (
 			<div>
-				<Grid>
-					<Row className="show-grid">
-						<Col xsOffset={3}>
-							<Input type="text" placeholder="Search..."/>
-						</Col>
-						<Col xsOffset={9}>
-							<Button bsStyle="success" type="submit">Submit</Button>
-						</Col>
-					</Row>
-				</Grid>
 
 				<Accordion>					
 					<Panel bsStyle="success" header="What can you find here?" eventKey="1">

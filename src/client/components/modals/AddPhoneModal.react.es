@@ -4,9 +4,23 @@ import React from 'react';
 import {
     Button,
     Modal,
-    Input
+    Input, 
+    DropdownButton,
+    MenuItem,
+    buttonAfter
 } from 'react-bootstrap';
 import PhonesActions from 'actions/phones_actions';
+
+const innerDropdown = (
+        <DropdownButton title="Action" id="input-dropdown-addon">
+            <MenuItem key="1">IPhone</MenuItem>
+            <MenuItem key="2">Samsung</MenuItem>
+            <MenuItem key="3">Lenovo</MenuItem>
+            <MenuItem key="4">HTC</MenuItem>
+            <MenuItem key="5">LG</MenuItem>
+            <MenuItem key="6">Nokia</MenuItem>
+        </DropdownButton>
+);
 
 export default class BaseModal extends React.Component {
     constructor(props) {
@@ -71,7 +85,7 @@ export default class BaseModal extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <h4>Please, type fill information</h4>
-                        <Input type="text" ref="mark" placeholder="mark"/>
+                        <Input type="text" ref="mark" placeholder="mark"  buttonAfter={innerDropdown} />
                         <Input type="text" ref="model" placeholder="model"/>
                         <Input type="text" ref="color" placeholder="color"/>
                         <Input type="text" ref="wifi" placeholder="wifi"/>
@@ -83,7 +97,7 @@ export default class BaseModal extends React.Component {
                         <Input type="number" ref="memory" placeholder="memory"/>
                         <Input type="number" ref="camera" placeholder="camera"/>
                         <Input type="checkbox" label="Has gps" ref="gps"/>
-
+                        <Input type="file" label="Download image of phone"/>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.close}>Save phone</Button>

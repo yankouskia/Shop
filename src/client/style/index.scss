@@ -1,23 +1,4 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import './bootstrap_overrides.scss';
 @import './header.scss';
-
-.btn {
-	&:active:focus, &:focus {
-		outline: none;
-	}
-}
-
-.btn-default
-{
-	&:active:focus
-	{
-		outline: none;
-		background-color: darken( #fff, 10%);
-	}
-	&:focus
-	{
-		outline: none;
-		background-color: #fff;
-	}
-}

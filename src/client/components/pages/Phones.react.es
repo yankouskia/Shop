@@ -13,9 +13,9 @@ export default class NotesPage extends React.Component {
     render() {
         return (
             <div className="container">
-                <AddPhoneModal />
-                <hr/>
                 <PhonesTable />
+                <hr/>
+                <AddPhoneModal />
             </div>
         );
     }
