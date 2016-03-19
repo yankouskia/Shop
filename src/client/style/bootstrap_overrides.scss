@@ -1,0 +1,80 @@
+.btn {
+	&:active:focus, &:focus {
+		outline: none;
+	}
+}
+
+.btn-default {
+	&:active:focus {
+		outline: none;
+		background-color: darken( #fff, 10%);
+	}
+	&:focus {
+		outline: none;
+		background-color: #fff;
+	}
+}
+
+.col-md-12.col-xs-14 {
+	display: flex;
+	margin-right: 30px;
+
+	.img-responsive {
+		width: 150px;
+		height: 250px;
+		padding: 1px;
+		margin: 5px;
+		/*background-image: url(images/phoneDefaultImage.jpg);*/
+		background-color: #9400D3;
+	}
+
+	.checkbox {
+		margin-left: 12px;
+
+		.span {
+			 text-decoration: underline;
+		}
+	}
+
+	.panel.panel-info {
+		
+		.panel-body {
+			display: flex;
+
+			.well.well-lg {
+				height: 150px;
+				margin-right: 10px;
+				position: relative;
+				overflow: hidden; 
+			    text-overflow: ellipsis;
+			}
+
+			p {
+				span,
+				span.badge {
+					position: absolute;
+					right: 10px;
+					bottom: 10px;
+				}
+
+				span {
+					right: 45px;
+				}
+			}
+
+			ul .list-group {
+
+				li {
+
+				}
+			}
+
+			.btn-group {
+				position: absolute;
+				left: 192px;
+				top: 212px;
+			}
+		}
+	}
+
+}
