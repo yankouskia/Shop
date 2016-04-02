@@ -6,6 +6,7 @@ import hpp from 'hpp';
 import bodyParser from 'body-parser';
 import apiRouter from '../routes/api';
 import staticsRouter from '../routes/statics';
+import graphqlRouter from '../graphql';
 import env from '../../../env';
 
 const errorHandler = (err, req, res, next) => {
@@ -41,8 +42,10 @@ export default (app) => {
     }));
 
     app.use(bodyParser.json());
+    app.use(bodyParser.text({ type: 'application/graphql' }));
 
     app.use(hpp());
+    app.use('/', graphqlRouter);
     app.use('/', apiRouter);
     app.use('/', staticsRouter);
 
