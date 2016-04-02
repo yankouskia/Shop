@@ -42,11 +42,10 @@ export default (app) => {
     }));
 
     app.use(bodyParser.json());
-    app.use(bodyParser.text({ type: 'application/graphql' }));
 
     app.use(hpp());
-    app.use('/', graphql);
     app.use('/', apiRouter);
+    app.use('/graphql', graphql);
     app.use('/', staticsRouter);
 
     app.use(errorHandler);

@@ -3,6 +3,7 @@
 import PhoneModel from '../models/phones';
 
 const getAll = (req, res) => {
+    console.log('getAll');
     PhoneModel.find({}, function(err, docs) {
         if(err) {
             res.send({error: err});

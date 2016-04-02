@@ -25,31 +25,31 @@ var data = {
 
 // Define our user type, with two string fields; `id` and `name`
 var userType = new graphql.GraphQLObjectType({
-  name: 'User',
-  fields: {
-    id: { type: graphql.GraphQLString },
-    name: { type: graphql.GraphQLString },
-  }
+    name: 'User',
+    fields: {
+        id: { type: graphql.GraphQLString },
+        name: { type: graphql.GraphQLString },
+    }
 });
 
 
 // Define our schema, with one top level field, named `user`, that
 // takes an `id` argument and returns the User with that ID.
 var schema = new graphql.GraphQLSchema({
-  query: new graphql.GraphQLObjectType({
-    name: 'Query',
-    fields: {
-      user: {
-        type: userType,
-        args: {
-          id: { type: graphql.GraphQLString }
-        },
-        resolve: function (root, args) {
-            return _.isEmpty(args) ? _.keys(data) : data[args.id];
+    query: new graphql.GraphQLObjectType({
+        name: 'Query',
+        fields: {
+            user: {
+                type: userType,
+                args: {
+                    id: { type: graphql.GraphQLString }
+                },
+                resolve: function (root, args) {
+                    return _.isEmpty(args) ? _.keys(data) : data[args.id];
+                }
+            }
         }
-      }
-    }
-  })
+    })
 });
 
 export default schema;
