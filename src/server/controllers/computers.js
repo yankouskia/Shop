@@ -3,6 +3,7 @@
 import ComputerModel from '../models/computers';
 
 const getAll = (req, res) => {
+    console.log('getAll');
     ComputerModel.find({}, function(err, docs) {
         if(err) {
             res.send({error: err});

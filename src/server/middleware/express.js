@@ -6,6 +6,7 @@ import hpp from 'hpp';
 import bodyParser from 'body-parser';
 import apiRouter from '../routes/api';
 import staticsRouter from '../routes/statics';
+import graphql from '../graphql';
 import env from '../../../env';
 
 const errorHandler = (err, req, res, next) => {
@@ -44,6 +45,7 @@ export default (app) => {
 
     app.use(hpp());
     app.use('/', apiRouter);
+    app.use('/graphql', graphql);
     app.use('/', staticsRouter);
 
     app.use(errorHandler);
