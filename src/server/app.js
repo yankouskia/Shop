@@ -4,11 +4,14 @@ import express from 'express';
 import mongoMiddleware from './middleware/mongo';
 import serverMiddleware from './middleware/server';
 import Promise from 'bluebird';
+import test from './graphql/schema';
 
 const app = express();
 let isAppStarted = false;
 
 app.start = () => {
+    test();
+
     if(!isAppStarted) {
         isAppStarted = true;
         Promise.all([

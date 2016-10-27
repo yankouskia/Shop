@@ -75,10 +75,14 @@
     "webpack": "1.10.1"
   },
   "dependencies": {
+    "apollo-server": "^0.3.3",
     "async": "1.5.0",
-    "body-parser": "1.14.1",
+    "body-parser": "^1.14.1",
     "bootstrap": "3.3.6",
     "bootstrap-sass": "3.3.6",
+    "express": "^4.14.0",
+    "graphql": "^0.7.2",
+    "graphql-tools": "^0.8.0",
     "helmet": "0.14.0",
     "hpp": "0.2.0",
     "material-ui": "0.14.0",

@@ -56,4 +56,4 @@ AddItem = reduxForm({
     destroyOnUnmount: false,
 })(AddItem);
 
-export default AddItem;
+//export default AddItem;
