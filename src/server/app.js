@@ -7,14 +7,12 @@ import expressMiddleware from './middleware/express';
 import apolloMiddleware from './middleware/apollo';
 
 import Promise from 'bluebird';
-import test from './graphql/schema';
 
 const app = express();
 let isAppStarted = false;
 
 app.start = () => {
-    test();
-
+    
     if(!isAppStarted) {
         isAppStarted = true;
         Promise.all([

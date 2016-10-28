@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import apiRouter from '../../routes/api';
 import staticsRouter from '../../routes/statics';
 import env from '../../../../env';
+import cors from 'cors';
 
 const errorHandler = (err, req, res, next) => {
     let errData = err.message ? err.message : err;
@@ -43,6 +44,12 @@ export default (app) => {
     app.use(bodyParser.json());
 
     app.use(hpp());
+
+    app.use(
+        cors({
+          origin: 'http://localhost:3000'
+        }
+    ));
 
     app.use('/', apiRouter);
     app.use(staticsRouter);
