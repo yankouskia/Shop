@@ -1,14 +1,15 @@
 'use strict';
 
-import request from 'utils/request';
+import sendQuery from 'utils/graphql-request';
+
 import types from 'constants/ActionTypes/Phones';
 
 export function getAllPhones() {
-    return dispatch => {
-        request.get('phones/getAll', {}).then(({data}) => {
-            dispatch({ type: types.GET_ALL_PHONES, phones: data });
-        });
-    };
+	return dispatch => {
+		sendQuery('{"query": "{  phones { mark model color operatingSystem memory price } }"}', {}).then(({data}) => {
+			dispatch({ type: types.GET_ALL_PHONES, phones: data.phones });
+		});
+	};
 }
 
 export function addPhone(fields) {
