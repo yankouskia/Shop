@@ -2,7 +2,10 @@
 
 import express from 'express';
 import mongoMiddleware from './middleware/mongo';
-import serverMiddleware from './middleware/server';
+
+import expressMiddleware from './middleware/express';
+import apolloMiddleware from './middleware/apollo';
+
 import Promise from 'bluebird';
 import test from './graphql/schema';
 
@@ -15,7 +18,8 @@ app.start = () => {
     if(!isAppStarted) {
         isAppStarted = true;
         Promise.all([
-            serverMiddleware(app),
+            expressMiddleware(app),
+            apolloMiddleware(app),
             mongoMiddleware(app)
         ]).then(() => {
             if (process.send) {

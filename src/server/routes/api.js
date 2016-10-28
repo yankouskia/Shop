@@ -8,7 +8,7 @@ import printersCtrl from '../controllers/printers'
 const router = express.Router();
 
 router
-	.post('/phones/add', phonesCtrl.add)
+    .post('/phones/add', phonesCtrl.add)
     .get('/phones/getAll', phonesCtrl.getAll);
 
 router
