@@ -47,3 +47,10 @@ export function addPhoneToShop(phone) {
         phone
     }
 }
+
+export function removePhoneFromShop(phone) {
+    return {
+        type: types.REMOVE_PHONE_FROM_SHOP,
+        phone
+    }
+}

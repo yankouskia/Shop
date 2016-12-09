@@ -18,7 +18,7 @@ function mapStateToProps(state) {
             <div className="header">
                 <Navbar>
                     <Navbar.Header>
-                        <Navbar.Brand>                
+                        <Navbar.Brand>
                             <Link to="/">
                                 Go to Main page
                             </Link>
@@ -35,7 +35,7 @@ function mapStateToProps(state) {
                                 <Link to="/computers">
                                     Go to Computers
                                 </Link>
-                            </MenuItem>                  
+                            </MenuItem>
                             <MenuItem eventKey={3.3}>
                                 <Link to="/list" activeClassName="active">
                                     Go to List of technologies
@@ -62,7 +62,7 @@ function mapStateToProps(state) {
                     <Navbar.Form pullRight>
                         <Button bsStyle="success" >
                             <Link to="/shop" activeClassName="active">
-                                <Glyphicon glyph="star" /> {count}
+                                <Glyphicon glyph="trash" /> {count}
                             </Link>
                         </Button>
 

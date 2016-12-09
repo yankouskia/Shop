@@ -4,7 +4,7 @@ import types from 'constants/ActionTypes/Phones';
 
 const initialState = {
     phones: [],
-    phonesInShop: []
+    phonesInShop: JSON.parse(localStorage.getItem('phonesInShop')) || []
 };
 
 export function phones(state = initialState, action) {
@@ -13,7 +13,7 @@ export function phones(state = initialState, action) {
             return {
                 ...state,
                 phones: [
-                    ...state.phones, 
+                    ...state.phones,
                     action.phone
                 ]
             };
@@ -34,12 +34,24 @@ export function phones(state = initialState, action) {
             };
 
         case types.ADD_PHONE_TO_SHOP:
+        action.phone.disabled = true;
+            let phonesInShop = [
+                ...state.phonesInShop,
+                action.phone
+            ];
+            localStorage.setItem('phonesInShop', JSON.stringify(phonesInShop));
             return {
                 ...state,
-                phonesInShop: [
-                    ...state.phonesInShop,
-                    action.phone
-                ]
+                phonesInShop: phonesInShop
+            };
+
+        case types.REMOVE_PHONE_FROM_SHOP:
+        action.phone.disabled = false;
+            phonesInShop = state.phonesInShop.filter(phone => phone !== action.phone);;
+            localStorage.setItem('phonesInShop', JSON.stringify(phonesInShop));
+            return {
+                ...state,
+                phonesInShop: phonesInShop
             };
 
         default:

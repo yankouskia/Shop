@@ -21,6 +21,7 @@ import * as phonesActions from 'actions/phones';
 function mapStateToProps(state) {
 return {
 phones: state.phones.phones,
+phonesInShop: state.phones.phonesInShop,
 };
 }
 
@@ -42,7 +43,6 @@ class PhonesTable extends Component {
         this.props.addPhoneToShop(phone);
     }
 
-
     render() {
         let phones = this.props.phones;
         return (
@@ -53,16 +53,15 @@ class PhonesTable extends Component {
                     <Accordion>
                         {
                             phones.sort((left, right) => {return left.mark.toLowerCase() > right.mark.toLowerCase() ? 1 : -1}).map((phone, index) => {
-                                //const header = `${phone.mark} ${phone.model}; System: ${phone.operatingSystem}; Color: ${phone.color}  `;
                             const panelHeader = (
                                 <Row>
-                                <Col xs={8}><h3>${phone.mark} ${phone.model}; System: ${phone.operatingSystem}; Color: ${phone.color}</h3></Col>
-                                <Col xs={4}>
-                                <ButtonToolbar className="pull-right">
-                                <Button bsStyle="success" onClick={(evt) => this.addPhoneToShop(phone, evt)}>Add to shop</Button>
-                            </ButtonToolbar>
-                            </Col>
-                            </Row>
+                                    <Col xs={8}><h3>${phone.mark} ${phone.model}; System: ${phone.operatingSystem}; Color: ${phone.color}</h3></Col>
+                                    <Col xs={4}>
+                                        <ButtonToolbar className="pull-right">
+                                            <Button bsStyle="success" onClick={(evt) => this.addPhoneToShop(phone, evt)}  disabled={phone.disabled}>Add to shop</Button>
+                                        </ButtonToolbar>
+                                    </Col>
+                                </Row>
                             );
                                 return <Panel bsStyle="success" header={panelHeader} eventKey={panelHeader} key={index}>                                    <ListGroup>
                                         <ListGroupItem header="RAM" bsStyle="info">{phone.ram}</ListGroupItem>
@@ -77,7 +76,7 @@ class PhonesTable extends Component {
                                     </ListGroup>
                                 </Panel>
                             })
-                        }         
+                        }
                     </Accordion>
                 </div>
             </section>

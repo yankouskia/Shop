@@ -4,7 +4,7 @@ import types from 'constants/ActionTypes/Computers';
 
 const initialState = {
     computers: [],
-    computersInShop: []
+    computersInShop: JSON.parse(localStorage.getItem('computersInShop')) || []
 };
 
 export function computers(state = initialState, action) {
@@ -16,12 +16,23 @@ export function computers(state = initialState, action) {
             };
 
         case types.ADD_COMPUTER_TO_SHOP:
+            action.computer.disabled = true;
+            let computersInShop = [
+                ...state.computersInShop,
+                action.computer
+            ]
+            localStorage.setItem('computersInShop', JSON.stringify(computersInShop));
             return {
                 ...state,
-                computersInShop: [
-                    ...state.computersInShop,
-                    action.computer
-                ]
+                computersInShop: computersInShop
+            };
+        case types.REMOVE_COMPUTER_FROM_SHOP:
+            action.computer.disabled = false;
+            computersInShop = state.computersInShop.filter(computer => computer !== action.computer);
+            localStorage.setItem('computersInShop', JSON.stringify(computersInShop));
+            return {
+                ...state,
+                computersInShop: computersInShop
             };
 
         default:

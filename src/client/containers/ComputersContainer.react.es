@@ -50,16 +50,15 @@ class ComputersTable extends Component {
                     <Accordion>
                     {
                         computers.sort((left, right) => {return left.mark.toLowerCase() > right.mark.toLowerCase() ? 1 : -1}).map((computer, index) => {
-                            //const header = `${computer.mark} ${computer.model}; Operating System: ${computer.operatingSystem}; Memory(GB): ${computer.memory}`;
                         const panelHeader = (
                             <Row>
-                            <Col xs={8}><h3>${computer.mark} ${computer.model}; Operating System: ${computer.operatingSystem}; Memory(GB): ${computer.memory}</h3></Col>
-                        <Col xs={4}>
-                            <ButtonToolbar className="pull-right">
-                            <Button bsStyle="success" onClick={(evt) => this.addComputerToShop(computer, evt)}>Add to shop</Button>
-                        </ButtonToolbar>
-                        </Col>
-                        </Row>
+                                <Col xs={8}><h3>${computer.mark} ${computer.model}; Operating System: ${computer.operatingSystem}; Memory(GB): ${computer.memory}</h3></Col>
+                                <Col xs={4}>
+                                    <ButtonToolbar className="pull-right">
+                                        <Button bsStyle="success" onClick={(evt) => this.addComputerToShop(computer, evt)} disabled={computer.disabled}>Add to shop</Button>
+                                    </ButtonToolbar>
+                                </Col>
+                            </Row>
                         );
                         return <Panel bsStyle="success" header={panelHeader} eventKey={panelHeader} key={index}>
                                 <ListGroup>
@@ -79,7 +78,7 @@ class ComputersTable extends Component {
                                 </ListGroup>
                             </Panel>
                         })
-                    }         
+                    }
                     </Accordion>
                 </div>
             </section>

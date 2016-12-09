@@ -37,3 +37,10 @@ export function addComputerToShop(computer) {
         computer
     }
 }
+
+export function removeComputerFromShop(computer) {
+    return {
+        type: types.REMOVE_COMPUTER_FROM_SHOP,
+        computer
+    }
+}
