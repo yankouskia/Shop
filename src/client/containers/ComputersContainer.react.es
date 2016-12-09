@@ -35,7 +35,7 @@ class ComputersTable extends Component {
         this.props.getAllComputers();
     }
 
-    addComputerToShop( computer, e) {
+    addComputerToShop(computer, e) {
         e.stopPropagation();
         e.preventDefault();
         this.props.addComputerToShop(computer);
@@ -55,7 +55,7 @@ class ComputersTable extends Component {
                                 <Col xs={8}><h3>${computer.mark} ${computer.model}; Operating System: ${computer.operatingSystem}; Memory(GB): ${computer.memory}</h3></Col>
                                 <Col xs={4}>
                                     <ButtonToolbar className="pull-right">
-                                        <Button bsStyle="success" onClick={(evt) => this.addComputerToShop(computer, evt)} disabled={computer.disabled}>Add to shop</Button>
+                                        <Button bsStyle="success" onClick={(evt) => this.addComputerToShop(computer, evt)} disabled={computer.disabled}>Add to cart</Button>
                                     </ButtonToolbar>
                                 </Col>
                             </Row>

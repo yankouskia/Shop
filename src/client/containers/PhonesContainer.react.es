@@ -58,23 +58,24 @@ class PhonesTable extends Component {
                                     <Col xs={8}><h3>${phone.mark} ${phone.model}; System: ${phone.operatingSystem}; Color: ${phone.color}</h3></Col>
                                     <Col xs={4}>
                                         <ButtonToolbar className="pull-right">
-                                            <Button bsStyle="success" onClick={(evt) => this.addPhoneToShop(phone, evt)}  disabled={phone.disabled}>Add to shop</Button>
+                                            <Button bsStyle="success" onClick={(evt) => this.addPhoneToShop(phone, evt)}  disabled={phone.disabled}>Add to cart</Button>
                                         </ButtonToolbar>
                                     </Col>
                                 </Row>
                             );
-                                return <Panel bsStyle="success" header={panelHeader} eventKey={panelHeader} key={index}>                                    <ListGroup>
-                                        <ListGroupItem header="RAM" bsStyle="info">{phone.ram}</ListGroupItem>
-                                        <ListGroupItem header="Camera" bsStyle="info">{phone.camera}</ListGroupItem>
-                                        <ListGroupItem header="Color" bsStyle="info">{phone.color}</ListGroupItem>
-                                        <ListGroupItem header="Number of cores" bsStyle="info">{phone.coresNumber}</ListGroupItem>
-                                        <ListGroupItem header="gps" bsStyle="info">{phone.gps}</ListGroupItem>
-                                        <ListGroupItem header="wi-fi" bsStyle="info">{phone.wifi}</ListGroupItem>
-                                        <ListGroupItem header="diagonal" bsStyle="info">{phone.diagonal}</ListGroupItem>
-                                        <ListGroupItem header="Operating system" bsStyle="info">{phone.operatingSystem}</ListGroupItem>
-                                        <ListGroupItem header="Price, dollars($)" bsStyle="info">{phone.price}</ListGroupItem>
-                                    </ListGroup>
-                                </Panel>
+                                return <Panel bsStyle="success" header={panelHeader} eventKey={panelHeader} key={index}>
+                                            <ListGroup>
+                                                <ListGroupItem header="RAM" bsStyle="info">{phone.ram}</ListGroupItem>
+                                                <ListGroupItem header="Camera" bsStyle="info">{phone.camera}</ListGroupItem>
+                                                <ListGroupItem header="Color" bsStyle="info">{phone.color}</ListGroupItem>
+                                                <ListGroupItem header="Number of cores" bsStyle="info">{phone.coresNumber}</ListGroupItem>
+                                                <ListGroupItem header="gps" bsStyle="info">{phone.gps}</ListGroupItem>
+                                                <ListGroupItem header="wi-fi" bsStyle="info">{phone.wifi}</ListGroupItem>
+                                                <ListGroupItem header="diagonal" bsStyle="info">{phone.diagonal}</ListGroupItem>
+                                                <ListGroupItem header="Operating system" bsStyle="info">{phone.operatingSystem}</ListGroupItem>
+                                                <ListGroupItem header="Price, dollars($)" bsStyle="info">{phone.price}</ListGroupItem>
+                                          </ListGroup>
+                                      </Panel>
                             })
                         }
                     </Accordion>
