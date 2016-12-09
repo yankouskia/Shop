@@ -3,7 +3,8 @@
 import types from 'constants/ActionTypes/Computers';
 
 const initialState = {
-    computers: []
+    computers: [],
+    computersInShop: []
 };
 
 export function computers(state = initialState, action) {
@@ -12,6 +13,15 @@ export function computers(state = initialState, action) {
             return {
                 ...state,
                 computers: action.computers,
+            };
+
+        case types.ADD_COMPUTER_TO_SHOP:
+            return {
+                ...state,
+                computersInShop: [
+                    ...state.computersInShop,
+                    action.computer
+                ]
             };
 
         default:

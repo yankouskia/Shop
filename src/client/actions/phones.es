@@ -40,3 +40,10 @@ export function deletePhone(index) {
         index,
     };
 }
+
+export function addPhoneToShop(phone) {
+    return {
+        type: types.ADD_PHONE_TO_SHOP,
+        phone
+    }
+}

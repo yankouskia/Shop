@@ -3,7 +3,8 @@
 import types from 'constants/ActionTypes/Phones';
 
 const initialState = {
-  phones: []
+    phones: [],
+    phonesInShop: []
 };
 
 export function phones(state = initialState, action) {
@@ -30,6 +31,15 @@ export function phones(state = initialState, action) {
             return {
                 ...state,
                 phones: action.phones
+            };
+
+        case types.ADD_PHONE_TO_SHOP:
+            return {
+                ...state,
+                phonesInShop: [
+                    ...state.phonesInShop,
+                    action.phone
+                ]
             };
 
         default:

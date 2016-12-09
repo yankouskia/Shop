@@ -6,7 +6,11 @@ import {
     Panel,
     Well,
     ListGroupItem,
-    ListGroup
+    ListGroup,
+    Button,
+    Row,
+    Col,
+    ButtonToolbar
 } from 'react-bootstrap';
 import PhonesAddModal from 'components/Modals/AddPhoneModal.react';
 import { bindActionCreators } from 'redux';
@@ -32,6 +36,13 @@ class PhonesTable extends Component {
         this.props.getAllPhones();
     }
 
+    addPhoneToShop( phone, e) {
+        e.stopPropagation();
+        e.preventDefault();
+        this.props.addPhoneToShop(phone);
+    }
+
+
     render() {
         let phones = this.props.phones;
         return (
@@ -42,9 +53,18 @@ class PhonesTable extends Component {
                     <Accordion>
                         {
                             phones.sort((left, right) => {return left.mark.toLowerCase() > right.mark.toLowerCase() ? 1 : -1}).map((phone, index) => {
-                                const header = `${phone.mark} ${phone.model}; System: ${phone.operatingSystem}; Color: ${phone.color}`;
-                                return <Panel bsStyle="success" header={header} eventKey={header} key={index}>
-                                    <ListGroup>
+                                //const header = `${phone.mark} ${phone.model}; System: ${phone.operatingSystem}; Color: ${phone.color}  `;
+                            const panelHeader = (
+                                <Row>
+                                <Col xs={8}><h3>${phone.mark} ${phone.model}; System: ${phone.operatingSystem}; Color: ${phone.color}</h3></Col>
+                                <Col xs={4}>
+                                <ButtonToolbar className="pull-right">
+                                <Button bsStyle="success" onClick={(evt) => this.addPhoneToShop(phone, evt)}>Add to shop</Button>
+                            </ButtonToolbar>
+                            </Col>
+                            </Row>
+                            );
+                                return <Panel bsStyle="success" header={panelHeader} eventKey={panelHeader} key={index}>                                    <ListGroup>
                                         <ListGroupItem header="RAM" bsStyle="info">{phone.ram}</ListGroupItem>
                                         <ListGroupItem header="Camera" bsStyle="info">{phone.camera}</ListGroupItem>
                                         <ListGroupItem header="Color" bsStyle="info">{phone.color}</ListGroupItem>
