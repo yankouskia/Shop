@@ -30,17 +30,3 @@ export function getAllComputers(mark = '') {
         });
     };
 }
-
-export function addComputerToShop(computer) {
-    return {
-        type: types.ADD_COMPUTER_TO_SHOP,
-        computer
-    }
-}
-
-export function removeComputerFromShop(computer) {
-    return {
-        type: types.REMOVE_COMPUTER_FROM_SHOP,
-        computer
-    }
-}

@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
     return {
-        phoneCount: state.phones.phonesInShop.length,
-        computerCount: state.computers.computersInShop.length,
+        phoneCount: state.shop.phonesInShop.length,
+        computerCount: state.shop.computersInShop.length,
     };
 }
  class Header extends React.Component {

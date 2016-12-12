@@ -17,18 +17,20 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as phonesActions from 'actions/phones';
+import * as shopActions from 'actions/shop';
 
 function mapStateToProps(state) {
-return {
-phones: state.phones.phones,
-phonesInShop: state.phones.phonesInShop,
-};
+    return {
+        phones: state.phones.phones,
+        phonesInShop: state.shop.phonesInShop
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({
-...phonesActions,
-}, dispatch);
+    return bindActionCreators({
+        ...phonesActions,
+        ...shopActions
+    }, dispatch);
 }
 
 class PhonesTable extends Component {
@@ -40,6 +42,12 @@ class PhonesTable extends Component {
     addPhoneToShop( phone, e) {
         e.stopPropagation();
         e.preventDefault();
+
+        let phonesInShop = [
+            ...this.props.phonesInShop,
+            phone
+        ];
+        localStorage.setItem('phonesInShop', JSON.stringify(phonesInShop));
         this.props.addPhoneToShop(phone);
     }
 

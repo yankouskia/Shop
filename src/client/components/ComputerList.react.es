@@ -14,16 +14,18 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as computersActions from 'actions/computers';
+import * as shopActions from 'actions/shop';
 
 function mapStateToProps(state) {
     return {
-        computers: state.computers.computersInShop,
+        computers: state.shop.computersInShop,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         ...computersActions,
+        ...shopActions
     }, dispatch);
 }
 
@@ -34,6 +36,9 @@ class ComputerList extends Component {
     removeComputerFromShop(computer, e) {
         e.stopPropagation();
         e.preventDefault();
+        console.log(this.props);
+        let computersInShop = this.props.computers.filter(computerInShop => computerInShop !== computer);
+        localStorage.setItem('computersInShop', JSON.stringify(computersInShop));
         this.props.removeComputerFromShop(computer);
     }
     render() {

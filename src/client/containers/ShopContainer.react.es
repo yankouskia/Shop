@@ -14,9 +14,10 @@ import ComputerList from 'components/ComputerList.react';
 import * as shopActions from 'actions/shop';
 
 function mapStateToProps(state) {
+console.log('state', state);
     return {
-        phones: state.phones.phonesInShop,
-        computers: state.computers.computersInShop,
+        phones: state.shop.phonesInShop,
+        computers: state.shop.computersInShop,
     };
 }
 
@@ -26,6 +27,10 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 class Shop extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props)
+  }
     render() {
         return (
             <section>

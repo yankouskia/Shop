@@ -16,16 +16,19 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as computersActions from 'actions/computers';
+import * as shopActions from 'actions/shop';
 
 function mapStateToProps(state) {
     return {
         computers: state.computers.computers,
+        computersInShop: state.shop.computersInShop
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         ...computersActions,
+        ...shopActions
     }, dispatch);
 }
 
@@ -38,6 +41,12 @@ class ComputersTable extends Component {
     addComputerToShop(computer, e) {
         e.stopPropagation();
         e.preventDefault();
+
+        let computersInShop = [
+            ...this.props.computersInShop,
+            computer
+        ];
+        localStorage.setItem('computersInShop', JSON.stringify(computersInShop));
         this.props.addComputerToShop(computer);
     }
 

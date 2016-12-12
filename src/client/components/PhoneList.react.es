@@ -14,16 +14,18 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as phonesActions from 'actions/phones';
+import * as shopActions from 'actions/shop';
 
 function mapStateToProps(state) {
     return {
-        phones: state.phones.phonesInShop,
+        phones: state.shop.phonesInShop,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         ...phonesActions,
+        ...shopActions
     }, dispatch);
 }
 
@@ -35,12 +37,11 @@ class PhoneList extends Component {
     removePhoneFromShop(phone, e) {
         e.stopPropagation();
         e.preventDefault();
+        let phonesInShop = this.props.phones.filter(phoneInShop => phoneInShop !== phone);
+        localStorage.setItem('phonesInShop', JSON.stringify(phonesInShop));
         this.props.removePhoneFromShop(phone);
     }
-    checkPhone(phone) {
-      console.log(this.props.phones.indexOf(phone), (this.props.phones.indexOf(phone) !== -1))
-      //  return (this.props.phones.indexOf(phone) !== -1)
-    }
+
     render() {
         return (
           <div>
