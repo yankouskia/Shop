@@ -6,6 +6,7 @@ import { items } from './items';
 import { phones } from './phones';
 import { example } from './example';
 import { computers } from './computers';
+import { shop } from './shop';
 
 const rootReducer = combineReducers({
 	form: formReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
 	items,
 	phones,
 	example,
-	computers
+	computers,
+	shop
 });
 
 export default rootReducer;
