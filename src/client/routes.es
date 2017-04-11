@@ -10,6 +10,7 @@ import List from 'containers/ListContainer.react';
 import Phones from 'containers/PhonesContainer.react';
 import Example from 'containers/ExampleContainer.react';
 import Computers from 'containers/ComputersContainer.react';
+import Shop from 'containers/ShopContainer.react';
 
 export default (
 	<Route path="/" component={App}>
@@ -18,6 +19,7 @@ export default (
 		<Route path="phones" component={Phones} />
 		<Route path="computers" component={Computers} />
 		<Route path="example" component={Example} />
+		<Route path="shop" component={Shop} />
 		<Route status={404} path="*" component={Home} />
 	</Route>
 );

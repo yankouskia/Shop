@@ -6,22 +6,29 @@ import {
     Panel,
     Well,
     ListGroupItem,
-    ListGroup
+    ListGroup,
+    Button,
+    Row,
+    Col,
+    ButtonToolbar
 } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as computersActions from 'actions/computers';
+import * as shopActions from 'actions/shop';
 
 function mapStateToProps(state) {
     return {
         computers: state.computers.computers,
+        computersInShop: state.shop.computersInShop
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         ...computersActions,
+        ...shopActions
     }, dispatch);
 }
 
@@ -29,6 +36,18 @@ class ComputersTable extends Component {
     constructor(props) {
         super(props);
         this.props.getAllComputers();
+    }
+
+    addComputerToShop(computer, e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        let computersInShop = [
+            ...this.props.computersInShop,
+            computer
+        ];
+        localStorage.setItem('computersInShop', JSON.stringify(computersInShop));
+        this.props.addComputerToShop(computer);
     }
 
     render() {
@@ -40,8 +59,17 @@ class ComputersTable extends Component {
                     <Accordion>
                     {
                         computers.sort((left, right) => {return left.mark.toLowerCase() > right.mark.toLowerCase() ? 1 : -1}).map((computer, index) => {
-                            const header = `${computer.mark} ${computer.model}; Operating System: ${computer.operatingSystem}; Memory(GB): ${computer.memory}`;
-                            return <Panel bsStyle="success" header={header} eventKey={header} key={index}>
+                        const panelHeader = (
+                            <Row>
+                                <Col xs={8}><h3>${computer.mark} ${computer.model}; Operating System: ${computer.operatingSystem}; Memory(GB): ${computer.memory}</h3></Col>
+                                <Col xs={4}>
+                                    <ButtonToolbar className="pull-right">
+                                        <Button bsStyle="success" onClick={(evt) => this.addComputerToShop(computer, evt)} disabled={computer.disabled}>Add to cart</Button>
+                                    </ButtonToolbar>
+                                </Col>
+                            </Row>
+                        );
+                        return <Panel bsStyle="success" header={panelHeader} eventKey={panelHeader} key={index}>
                                 <ListGroup>
                                     <ListGroupItem header="Color" bsStyle="info">{computer.color}</ListGroupItem>
                                     <ListGroupItem header="wi-fi" bsStyle="info">{computer.wifi}</ListGroupItem>
@@ -59,7 +87,7 @@ class ComputersTable extends Component {
                                 </ListGroup>
                             </Panel>
                         })
-                    }         
+                    }
                     </Accordion>
                 </div>
             </section>

@@ -12,6 +12,14 @@ export default function configureStore(initialState) {
     });
 
     const middleware = applyMiddleware(thunkMiddleware, logger);
+console.log('initialState', initialState);
+
+    initialState = {
+      shop :{
+        phonesInShop: JSON.parse(localStorage.getItem('phonesInShop')) || [],
+        computersInShop: JSON.parse(localStorage.getItem('computersInShop')) || []
+      }
+    }
 
     const store = middleware(createStore)(rootReducer, initialState);
 

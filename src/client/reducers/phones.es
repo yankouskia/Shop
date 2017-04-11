@@ -3,7 +3,7 @@
 import types from 'constants/ActionTypes/Phones';
 
 const initialState = {
-  phones: []
+    phones: []
 };
 
 export function phones(state = initialState, action) {
@@ -12,7 +12,7 @@ export function phones(state = initialState, action) {
             return {
                 ...state,
                 phones: [
-                    ...state.phones, 
+                    ...state.phones,
                     action.phone
                 ]
             };
